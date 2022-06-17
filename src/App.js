@@ -1,13 +1,16 @@
-import { useState } from "react";
-import PlayingField from "./components/PlayingField";
+import './App.css';
+import PlayBoard from "./components/PlayBoard";
+import CounterMoves from "./components/CounterMoves";
+import PlayTimer from "./components/PlayTimer";
 
 function App() {
 
+
   return (
-    <div className="App h-screen flex flex-col justify-center items-center bg-slate-600">
-      <PlayingField />
-      <span className="text-white text-xl">Count of moves: 0</span>
-      <span className="text-white text-xl">Game time: 0s</span>
+    <div className="App">
+      <PlayBoard/>
+      <CounterMoves />
+      <PlayTimer />
     </div>
   );
 }

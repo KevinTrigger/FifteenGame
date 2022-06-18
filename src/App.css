@@ -1,0 +1,18 @@
+.btn-pos{
+  transform: scale(1);
+  transition: transform .2s ease-in;
+}
+
+.btn-pos:hover{
+  transform: scale(1.1);
+}
+
+.btn-pos span{
+  transform: scale(1);
+  transition: transform .3s ease-in;
+  background-color: rgb(226 232 240);
+}
+
+.btn-pos:hover span{
+  transform: scale(1.1, 1.2);
+}

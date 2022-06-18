@@ -2,54 +2,76 @@ import PlaySquare from "./PlaySquare";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function PlayBoard() {
-  const [currentState, setCurrentState] = useState([]);
-  const [countChanged, setCountChanged] = useState(0);
-  
-  const onRandomPositions = () => {
-    const randomList = [];
-    while (randomList.length < 16) {
-      var rndValue = Math.floor(Math.random() * 16);
-      if (randomList.indexOf(rndValue) === -1) randomList.push(rndValue);
-    }
-    return randomList;
-  };
+function PlayBoard({ countMoves, setCountMoves }) {
+  const [currentState, setCurrentState] = useState([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 13, 14, 15, 12,
+  ]);
+  const [winning, setWinning] = useState(false);
+  // const onRandomPositions = () => {
+  //   const randomList = [];
+  //   while (randomList.length < 16) {
+  //     var rndValue = Math.floor(Math.random() * 16);
+  //     if (randomList.indexOf(rndValue) === -1) randomList.push(rndValue);
+  //   }
+  //   return randomList;
+  // };
+
+  // useEffect(() => {
+  //   const randomList = onRandomPositions();
+  //   setCurrentState(randomList);
+  // }, [])
 
   useEffect(() => {
-    const randomList = onRandomPositions();
-    setCurrentState(randomList);
-  }, [])
+    if (
+      currentState.toString() ===
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0].toString()
+    )
+      setWinning(true);
+  }, [currentState]);
 
-  function onSwapSquares(event) {
+  useEffect(() => {
+    if (winning) console.log("You win!");
+  }, [winning]);
+
+  const onSwapSquares = (event) => {
     let currentValue = event.target.innerHTML;
     let zeroIndex = currentState.indexOf(0);
     let currentValueIndex = currentState.indexOf(parseInt(currentValue));
 
-    if (currentValueIndex + 4 === zeroIndex || currentValueIndex - 4 === zeroIndex) {
-        swap(currentValueIndex, zeroIndex);
-    } else if (currentValueIndex + 1 === zeroIndex && zeroIndex % 4 !== 0 ) {
-        swap(currentValueIndex, zeroIndex);
-    } else if (currentValueIndex - 1 === zeroIndex && (zeroIndex + 1) % 4 !== 0) {
-        swap(currentValueIndex, zeroIndex)
+    if (
+      currentValueIndex + 4 === zeroIndex ||
+      currentValueIndex - 4 === zeroIndex
+    ) {
+      onChangeState(currentValueIndex, zeroIndex);
+    } else if (currentValueIndex + 1 === zeroIndex && zeroIndex % 4 !== 0) {
+      onChangeState(currentValueIndex, zeroIndex);
+    } else if (
+      currentValueIndex - 1 === zeroIndex &&
+      (zeroIndex + 1) % 4 !== 0
+    ) {
+      onChangeState(currentValueIndex, zeroIndex);
     }
   }
 
-  function swap(currentValueIndex, zeroIndex) {
-    let temArray = [...currentState]
+  const onChangeState = (currentValueIndex, zeroIndex) => {
+    let temArray = [...currentState];
     temArray[zeroIndex] = currentState[currentValueIndex];
     temArray[currentValueIndex] = 0;
-    setCurrentState([...temArray])
-    setCountChanged(countChanged + 1);
+    setCurrentState([...temArray]);
+    setCountMoves(countMoves + 1);
   }
 
-  console.log(currentState)
-
   return (
-    <div className="extra-sm:w-72 extra-sm:h-72 sm:h-96 sm:w-96 bg-gray-300 grid grid-cols-4 gap-1 border border-double p-1">
+    <div className="board-wrap">
       {currentState.map((item, index) => {
         return (
-          <PlaySquare key={item} index={index} value={item} onSwap={onSwapSquares}/>
-        )
+          <PlaySquare
+            key={item}
+            index={index}
+            value={item}
+            onSwap={onSwapSquares}
+          />
+        );
       })}
     </div>
   );

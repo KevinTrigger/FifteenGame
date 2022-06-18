@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-function PlayTimer() {
-
-  const [seconds, setSeconds] = useState(0);
-  
+function PlayTimer({ timeSeconds, setTimeSeconds }) {
   useEffect(() => {
-    setTimeout(() => setSeconds(seconds+1), 1000);
-  }, [seconds])
- 
+    setTimeout(() => setTimeSeconds(timeSeconds + 1), 1000);
+  }, [timeSeconds]);
+
   return (
     <div className="text-white text-base font-medium tracking-wider">
-      Game time: {seconds}s
+      Game time: {timeSeconds}s
     </div>
   );
 }

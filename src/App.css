@@ -16,3 +16,26 @@
 .btn-pos:hover span{
   transform: scale(1.1, 1.2);
 }
+
+.welcome-page {
+  position: absolute;
+}
+
+.welcome-page-enter-active {
+  animation: fade-in 1s forwards;
+}
+
+.welcome-page-exit-active {
+  animation: fade-in 1s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-400px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

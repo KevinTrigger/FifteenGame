@@ -2,36 +2,29 @@ import PlaySquare from "./PlaySquare";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function PlayBoard({ countMoves, setCountMoves }) {
-  const [currentState, setCurrentState] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 13, 14, 15, 12,
-  ]);
-  const [winning, setWinning] = useState(false);
-  // const onRandomPositions = () => {
-  //   const randomList = [];
-  //   while (randomList.length < 16) {
-  //     var rndValue = Math.floor(Math.random() * 16);
-  //     if (randomList.indexOf(rndValue) === -1) randomList.push(rndValue);
-  //   }
-  //   return randomList;
-  // };
+function PlayBoard({ countMoves, setCountMoves, victory, setVictory }) {
+  const [currentState, setCurrentState] = useState([]);
+  const onRandomPositions = () => {
+    const randomList = [];
+    while (randomList.length < 16) {
+      var rndValue = Math.floor(Math.random() * 16);
+      if (randomList.indexOf(rndValue) === -1) randomList.push(rndValue);
+    }
+    return randomList;
+  };
 
-  // useEffect(() => {
-  //   const randomList = onRandomPositions();
-  //   setCurrentState(randomList);
-  // }, [])
+  useEffect(() => {
+    const randomList = onRandomPositions();
+    setCurrentState(randomList);
+  }, [])
 
   useEffect(() => {
     if (
       currentState.toString() ===
       [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0].toString()
     )
-      setWinning(true);
+      setVictory(true);
   }, [currentState]);
-
-  useEffect(() => {
-    if (winning) console.log("You win!");
-  }, [winning]);
 
   const onSwapSquares = (event) => {
     let currentValue = event.target.innerHTML;
@@ -51,7 +44,7 @@ function PlayBoard({ countMoves, setCountMoves }) {
     ) {
       onChangeState(currentValueIndex, zeroIndex);
     }
-  }
+  };
 
   const onChangeState = (currentValueIndex, zeroIndex) => {
     let temArray = [...currentState];
@@ -59,7 +52,7 @@ function PlayBoard({ countMoves, setCountMoves }) {
     temArray[currentValueIndex] = 0;
     setCurrentState([...temArray]);
     setCountMoves(countMoves + 1);
-  }
+  };
 
   return (
     <div className="board-wrap">

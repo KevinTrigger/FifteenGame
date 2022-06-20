@@ -6,7 +6,7 @@ import ButtonPositive from "../components/UI/Button/ButtonPositive";
 function Welcome() {
   return (
     <div className="main-screen welcome-screen">
-      <h1 className="text-6xl text-slate-200 font-semibold">Puzzle Fifteen</h1>
+      <h1 className="extra-sm:text-5xl sm:text-7xl text-slate-200 font-bold">Puzzle Fifteen</h1>
       <Link to="/game">
         <ButtonPositive/>
       </Link>

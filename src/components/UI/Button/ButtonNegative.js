@@ -3,11 +3,11 @@ import React from 'react'
 function ButtonNegative() {
   return (
     <button
-          className="extra-sm:w-3/4 relative btn-pos mt-7 border uppercase font-semibold tracking-wider leading-none"
+          className="relative btn-neg mt-7 uppercase font-semibold tracking-wider leading-none rounded-lg "
           type="button"
         >
-          <span className="absolute inset-0 bg-white"></span>
-          <div className="relative px-8 py-4 bg-slate-200 text-slate-700">Main menu</div>
+          <span className="absolute inset-0 rounded-lg bg-white"></span>
+          <div className="relative px-8 py-4 rounded-lg bg-teal-700 text-white">Main menu</div>
         </button>
   )
 }

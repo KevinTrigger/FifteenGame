@@ -6,34 +6,38 @@
 
 
 .main-screen {
-  @apply h-screen flex flex-col justify-center items-center bg-violet-800 font-Comfortaa select-none;
+  @apply h-screen flex flex-col justify-center items-center bg-violet-800 font-Comfortaa select-none overflow-hidden;
 }
 
 .welcome-screen {
   @apply flex flex-col justify-center items-center text-center;
 }
 
-.square-wrap-first {
-  @apply w-full h-full bg-dark-blue font-bold text-3xl text-white hover:cursor-pointer flex items-center justify-center rounded-lg  border-white;
+.square-wrap {
+  @apply w-full h-full font-bold text-3xl text-white hover:cursor-pointer flex items-center justify-center rounded-lg  border-white;
 }
 
-.square-wrap-second {
-  @apply w-full h-full bg-ocean font-bold text-3xl text-white hover:cursor-pointer flex items-center justify-center rounded-lg  border-white;
+.elem_first-line {
+  @apply bg-dark-blue;
 }
 
-.square-wrap-third {
-  @apply w-full h-full bg-riviera font-bold text-3xl text-white hover:cursor-pointer flex items-center justify-center rounded-lg  border-white;
+.elem_second-line {
+  @apply bg-ocean;
 }
 
-.square-wrap-foured {
-  @apply w-full h-full bg-violet-600 font-bold text-3xl text-white hover:cursor-pointer flex items-center justify-center rounded-lg  border-white;
+.elem_third-line {
+  @apply bg-riviera;
+}
+
+.elem_foured-line {
+  @apply bg-violet-600;
 }
 
 .square-wrap-empty {
   @apply w-full h-full bg-violet-300 hover:cursor-pointer rounded-lg;
 }
 
-.empty-square {
+.square-empty-content {
   @apply opacity-0 w-full h-full flex items-center justify-center;
 }
 

@@ -1,18 +1,18 @@
-function PlaySquare({ value, index, onSwap }) {
 
+
+function PlaySquare({ value, onSwap }) {
   const handleClassNames = () => {
-    if (value) {
-      if (value >= 1 && value <= 4) return 'square-wrap-first';
-      if (value >= 5 && value <= 8) return 'square-wrap-second';
-      if (value >= 9 && value <= 12) return 'square-wrap-third ';
-      if (value >= 13 && value <= 15) return 'square-wrap-foured';
-    }
-    else return 'square-wrap-empty';
-  }
+  if (value) {
+      if (value >= 1 && value <= 4) return "elem_first-line";
+      else if (value >= 5 && value <= 8) return "elem_second-line";
+      else if (value >= 9 && value <= 12) return "elem_third-line";
+      else if (value >= 13 && value <= 15) return "elem_foured-line";
+    } else return "square-wrap-empty";
+  };
 
   return (
-    <div onClick={onSwap} className={handleClassNames()}>
-      <span className={value? 'numerical-square' : 'empty-square'}>
+    <div onClick={onSwap} className={`square-wrap ${handleClassNames()}`}>
+      <span className={value ? "numerical-square" : "square-empty-content"}>
         {value}
       </span>
     </div>

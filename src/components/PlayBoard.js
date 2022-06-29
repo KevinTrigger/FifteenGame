@@ -3,7 +3,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function PlayBoard({ countMoves, setCountMoves, victory, setVictory }) {
-  const [currentState, setCurrentState] = useState([1,2,3,4,5,6,7,8,9,10,11,0,13,14,15,12]);
+  const [currentState, setCurrentState] = useState([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 13, 14, 15, 12,
+  ]);
   // const onRandomPositions = () => {
   //   const randomList = [];
   //   while (randomList.length < 16) {
@@ -16,7 +18,7 @@ function PlayBoard({ countMoves, setCountMoves, victory, setVictory }) {
   // useEffect(() => {
   //   const randomList = onRandomPositions();
   //   setCurrentState(randomList);
-  // }, [])
+  // }, []);
 
   useEffect(() => {
     if (
@@ -56,15 +58,8 @@ function PlayBoard({ countMoves, setCountMoves, victory, setVictory }) {
 
   return (
     <div className="board-wrap">
-      {currentState.map((item, index) => {
-        return (
-          <PlaySquare
-            key={item}
-            index={index}
-            value={item}
-            onSwap={onSwapSquares}
-          />
-        );
+      {currentState.map((item) => {
+        return <PlaySquare key={item} value={item} onSwap={onSwapSquares} />;
       })}
     </div>
   );

@@ -18,6 +18,13 @@ module.exports = {
         "custom-teal": "#127059",
         ocean: "#075875",
         riviera: "#17a0b3",
+        victory: "#914BFF",
+        'modal-text': "#FBCE6B",
+        "banana": "#FBCE6B",
+      },
+      backgroundColor: {
+        "modal-window": "#FF7E35",
+        "blueBtn": "#8A40FF",
       },
     },
   },

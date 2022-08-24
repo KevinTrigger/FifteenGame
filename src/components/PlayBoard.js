@@ -1,24 +1,36 @@
 import PlaySquare from "./PlaySquare";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
-function PlayBoard({ countMoves, setCountMoves, victory, setVictory }) {
-  const [currentState, setCurrentState] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 13, 14, 15, 12,
-  ]);
-  // const onRandomPositions = () => {
-  //   const randomList = [];
-  //   while (randomList.length < 16) {
-  //     var rndValue = Math.floor(Math.random() * 16);
-  //     if (randomList.indexOf(rndValue) === -1) randomList.push(rndValue);
-  //   }
-  //   return randomList;
-  // };
+function PlayBoard({
+  countMoves,
+  setCountMoves,
+  victory,
+  setVictory,
+  setStopwatch,
+}) {
+  
+  const [currentState, setCurrentState] = useState([]);
 
-  // useEffect(() => {
-  //   const randomList = onRandomPositions();
-  //   setCurrentState(randomList);
-  // }, []);
+  const onRandomPositions = () => {
+    const randomList = [];
+    while (randomList.length < 16) {
+      var rndValue = Math.floor(Math.random() * 16);
+      if (randomList.indexOf(rndValue) === -1) randomList.push(rndValue);
+    }
+    return randomList;
+  };
+
+  useEffect(() => {
+    const randomList = onRandomPositions();
+    setCurrentState(randomList);
+  }, []);
+
+  useEffect(() => {
+    setInterval(() => {
+      setStopwatch((prev) => prev + 1);
+    }, 1000);
+  }, [victory]);
 
   useEffect(() => {
     if (
@@ -56,12 +68,27 @@ function PlayBoard({ countMoves, setCountMoves, victory, setVictory }) {
     setCountMoves(countMoves + 1);
   };
 
+  console.log(victory);
   return (
-    <div className="board-wrap">
+    <motion.div
+      initial={{
+        opacity: 1,
+      }}
+      animate={
+        victory && {
+          opacity: 0,
+        }
+      }
+      transition={{
+        duration: 0.2,
+        delay: 0.7,
+      }}
+      className="board-wrap"
+    >
       {currentState.map((item) => {
         return <PlaySquare key={item} value={item} onSwap={onSwapSquares} />;
       })}
-    </div>
+    </motion.div>
   );
 }
 

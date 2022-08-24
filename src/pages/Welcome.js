@@ -4,36 +4,35 @@ import { Link } from "react-router-dom";
 import ButtonPlay from "../components/UI/Button/ButtonPlay";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import AnimatedPage from "../components/AnimatedPage";
 
 function Welcome() {
   const [pageVisible, setPageVisible] = useState(false);
+  const animateVariants = {
+    initial: {x: -350, opacity: 0},
+    animate: {x: 0, opacity: 1}
+  }
 
   useEffect(() => {
     setPageVisible(!pageVisible);
   }, []);
   return (
     <div className={`main-screen welcome-screen`}>
-      <div>
-        <motion.h1
-          className={`mb-10 extra-sm:text-5xl sm:text-7xl text-slate-200 font-bold`}
-          initial={{
-            x: -350,
-            opacity: 0,
-          }}
-          animate={{
-            x: 0,
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-        >
-          Puzzle Fifteen
-        </motion.h1>
-        <Link to="/game">
-          <ButtonPlay pageVisible={pageVisible} />
-        </Link>
-      </div>
+      <AnimatedPage>
+        <div>
+          <motion.h1
+            className={`game-title`}
+            variants={animateVariants}
+            initial="initial"
+            animate="animate"
+          >
+            Puzzle Fifteen
+          </motion.h1>
+          <Link to="/game">
+            <ButtonPlay pageVisible={pageVisible} />
+          </Link>
+        </div>
+      </AnimatedPage>
     </div>
   );
 }

@@ -1,0 +1,7 @@
+.btn-play {
+  @apply uppercase font-bold tracking-wider leading-none rounded-lg px-10 py-5 bg-yellow-400 text-violet-800 text-2xl;
+}
+
+.game-title {
+  @apply mb-10 text-3xl extra-sm:text-4xl sm:text-5xl tablet:text-6xl laptop:text-7xl text-slate-200 font-bold;
+}

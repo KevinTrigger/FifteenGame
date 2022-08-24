@@ -2,6 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
+      "smaller": "200px",
       "extra-sm": "300px",
       sm: "420px",
       tablet: "640px",
@@ -19,12 +20,12 @@ module.exports = {
         ocean: "#075875",
         riviera: "#17a0b3",
         victory: "#914BFF",
-        'modal-text': "#FBCE6B",
-        "banana": "#FBCE6B",
+        "modal-text": "#FBCE6B",
+        banana: "#FBCE6B",
       },
       backgroundColor: {
         "modal-window": "#FF7E35",
-        "blueBtn": "#8A40FF",
+        blueBtn: "#8A40FF",
       },
     },
   },
